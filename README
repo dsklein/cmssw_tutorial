@@ -1,0 +1,17 @@
+This is Dan's code from his CMSSW lessons.
+
+First, you should setup an instance of CMSSW_5_3_2_patch4, then check out this stuff into CMSSW_5_3_2_patch4/src/
+
+To compile one of the individual projects, go into its directory and type:
+  scram b
+
+Once it's compiled, use cmsRun on the relevant _cfg.py file:
+  cmsRun blah_cfg.py
+
+You can figure out the rest. At the moment, I'm too lazy to write a detailed README file for this exercise.
+
+Ryan's lessons page:
+http://www.t2.ucsd.edu/twiki2/bin/view/UCSDTier2/AnalysisTutorial
+
+CMS workbook:
+https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBook
