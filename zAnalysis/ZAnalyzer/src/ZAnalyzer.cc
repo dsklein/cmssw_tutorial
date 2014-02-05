@@ -114,21 +114,21 @@ ZAnalyzer::ZAnalyzer(const edm::ParameterSet& iConfig)
   TH1::SetDefaultSumw2();
 
   edm::Service<TFileService> fs;
-  h_zMass =          fs->make<TH1D>("zmass",        "Mass of the Z", 30, 0, 150);
-  h_dilMass_gen =    fs->make<TH1D>("dilmassgen",   "Dilepton mass (gen)", 30, 0, 150);
-  h_dilMass_reco =   fs->make<TH1D>("dilmassreco",  "Dilepton mass (reco)", 30, 0, 150);
-  h_eeMass_gen =     fs->make<TH1D>("eemassgen",    "M_{ee} (gen)", 30, 0, 150);
-  h_eeMass_reco =    fs->make<TH1D>("eemassreco",   "M_{ee} (reco)", 30, 0, 150);
-  h_mumuMass_gen =   fs->make<TH1D>("mumumassgen",  "M_{#mu#mu} (gen)", 30, 0, 150);
-  h_mumuMass_reco =  fs->make<TH1D>("mumumassreco", "M_{#mu#mu} (reco)", 30, 0, 150);  
+  h_zMass =          fs->make<TH1D>("zmass",        "Mass of the Z (gen);m_{Z} (GeV);Entries", 30, 0, 150);
+  h_dilMass_gen =    fs->make<TH1D>("dilmassgen",   "Dilepton mass (gen);m_{ll} (GeV);Entries", 30, 0, 150);
+  h_dilMass_reco =   fs->make<TH1D>("dilmassreco",  "Dilepton mass (reco);m_{ll} (GeV);Entries", 30, 0, 150);
+  h_eeMass_gen =     fs->make<TH1D>("eemassgen",    "M_{ee} (gen);m_{ee} (GeV);Entries", 30, 0, 150);
+  h_eeMass_reco =    fs->make<TH1D>("eemassreco",   "M_{ee} (reco);m_{ee} (GeV);Entries", 30, 0, 150);
+  h_mumuMass_gen =   fs->make<TH1D>("mumumassgen",  "M_{#mu#mu} (gen);m_{#mu#mu} (GeV);Entries", 30, 0, 150);
+  h_mumuMass_reco =  fs->make<TH1D>("mumumassreco", "M_{#mu#mu} (reco);m_{#mu#mu} (GeV);Entries", 30, 0, 150);  
 
-  h_lepPt_gen =      fs->make<TH1D>("lepptgen",     "Lepton p_{T} (gen)", 40, 0, 200);
-  h_lepPt_reco =     fs->make<TH1D>("lepptreco",    "Lepton p_{T} (reco)", 40, 0, 200);
-  h_lepEta_gen =     fs->make<TH1D>("lepetagen",    "Lepton #eta (gen)", 30, -3, 3);
-  h_lepEta_reco =    fs->make<TH1D>("lepetareco",   "Lepton #eta (reco)", 30, -3, 3);
+  h_lepPt_gen =      fs->make<TH1D>("lepptgen",     "Lepton p_{T} (gen);p_{T} (GeV);Entries", 40, 0, 200);
+  h_lepPt_reco =     fs->make<TH1D>("lepptreco",    "Lepton p_{T} (reco);p_{T} (GeV);Entries", 40, 0, 200);
+  h_lepEta_gen =     fs->make<TH1D>("lepetagen",    "Lepton #eta (gen);#eta;Entries", 30, -3, 3);
+  h_lepEta_reco =    fs->make<TH1D>("lepetareco",   "Lepton #eta (reco);#eta;Entries", 30, -3, 3);
 
-  h_effEE =          fs->make<TH1D>("electroneff",     "Electron efficiency", 40, 0, 200);
-  h_effMu =          fs->make<TH1D>("muoneff",         "Muon efficiency", 40, 0, 200);
+  h_effEE =          fs->make<TH1D>("electroneff",     "Electron efficiency;electron p_{T};Efficiency", 40, 0, 200);
+  h_effMu =          fs->make<TH1D>("muoneff",         "Muon efficiency;muon p_{T};Efficiency", 40, 0, 200);
   h_effEE_numer =    fs->make<TH1D>("electroneffnum",  "Electron efficiency numerator", 40, 0, 200);
   h_effMu_numer =    fs->make<TH1D>("muoneffnum",      "Muon efficiency numerator", 40, 0, 200);
   h_effEE_denom =    fs->make<TH1D>("electroneffden",  "Electron efficiency denominator", 40, 0, 200);
@@ -300,15 +300,15 @@ ZAnalyzer::endJob()
 
   h_residual_zmass->FitSlicesY();
   TH1D* h_resolution_zmass = dynamic_cast<TH1D*>(gDirectory->Get("residzmass_2"));
-  h_resolution_zmass->SetNameTitle( "resozmass", "Z mass resolution" );
+  h_resolution_zmass->SetNameTitle( "resozmass", "Z mass resolution;m_{Z} (GeV);#sigma(m_{gen} - m_{reco})" );
 
   h_residual_elpt->FitSlicesY();
   TH1D* h_resolution_elpt = dynamic_cast<TH1D*>(gDirectory->Get("residelpt_2"));
-  h_resolution_elpt->SetNameTitle( "resoelpt", "Electron pt resolution" );
+  h_resolution_elpt->SetNameTitle( "resoelpt", "Electron pt resolution;p_{T} (GeV);#sigma(p_{T,gen} - p_{T,reco})" );
 
   h_residual_mupt->FitSlicesY();
   TH1D* h_resolution_mupt = dynamic_cast<TH1D*>(gDirectory->Get("residmupt_2"));
-  h_resolution_mupt->SetNameTitle( "resomupt", "Muon pt resolution" );
+  h_resolution_mupt->SetNameTitle( "resomupt", "Muon pt resolution;p_{T} (GeV);#sigma(p_{T,gen} - p_{T,reco})" );
 
   TH1::AddDirectory(olddir);
 }
