@@ -138,9 +138,9 @@ ZAnalyzer::ZAnalyzer(const edm::ParameterSet& iConfig)
   // h_resolution_elpt  = fs->make<TH1D>("resoelpt",   "Electron pt resolution", 40, 0, 200);
   // h_resolution_mupt  = fs->make<TH1D>("resomupt",   "Muon pt resolution", 40, 0, 200);
 
-  h_residual_zmass = fs->make<TH2D>("residzmass",   "Z mass residual plot", 30, 0, 150, 20, -100, 100);
-  h_residual_elpt  = fs->make<TH2D>("residelpt",    "Electron pt residual plot", 40, 0, 200, 20, -100, 100);
-  h_residual_mupt  = fs->make<TH2D>("residmupt",    "Muon pt residual plot", 40, 0, 200, 20, -100, 100);
+  h_residual_zmass = fs->make<TH2D>("residzmass",   "Z mass residual plot", 30, 0, 150, 100, -10, 10);
+  h_residual_elpt  = fs->make<TH2D>("residelpt",    "Electron pt residual plot", 10, 0, 100, 100, -10, 10);
+  h_residual_mupt  = fs->make<TH2D>("residmupt",    "Muon pt residual plot", 10, 0, 100, 100, -10, 10);
 }
 
 
